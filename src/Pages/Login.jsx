@@ -11,7 +11,10 @@ const Login = () => {
 
     const handleSocialLogin = () => {
         handleGoogleLogin()
-            .then(res => navigate('/'))
+            .then(res => {
+                toast.success('Login Successful!')
+                navigate('/')
+            })
     }
 
     const loginForm = (data) => {

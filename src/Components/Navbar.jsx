@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const { user, handleLogOut } = useAuth();
+  console.log(user);
   const links = <>
     <li><NavLink className={({ isActive }) =>
       isActive ? "text-secondary focus:bg-none focus:text-secondary" : ""} to='/'>Home</NavLink></li>
@@ -20,9 +21,9 @@ const Navbar = () => {
 
   const logOut = () => {
     handleLogOut()
-    .then(res=> toast.success('Logout Successful!'))
+      .then(res => toast.success('Logout Successful!'))
   }
-  
+
   return (
     <div className="navbar bg-primary text-white lg:px-10">
       <div className="navbar-start">
@@ -43,7 +44,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            className="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 shadow">
             {links}
           </ul>
         </div>
@@ -55,13 +56,29 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end gap-2">
-        {user ? <button onClick={logOut} className='btn'>LogOut</button> : <div>
-          <Link to='/login'><button className='btn btn-ghost'>Login</button></Link>
-          <Link to='/register'><button className='btn bg-secondary border-none'>Register</button></Link>
-        </div>}
-      </div>
+        {user ? <div className="dropdown dropdown-end">
+          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full">
+              <img
+                title={user?.displayName}
+                referrerPolicy='no-referrer'
+                alt={user?.displayName}
+                src={user?.photoURL} />
+            </div>
+          </div>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-primary rounded-box z-[1] mt-3 w-52 p-2 shadow">
+            <li><a onClick={logOut}>Logout</a></li>
+          </ul>
+          </div>
+          : <div>
+            <Link to='/login'><button className='btn btn-ghost'>Login</button></Link>
+            <Link to='/register'><button className='btn bg-secondary border-none'>Register</button></Link>
+          </div>}
+        </div>
     </div>
-  );
+      );
 };
 
-export default Navbar;
+      export default Navbar;
