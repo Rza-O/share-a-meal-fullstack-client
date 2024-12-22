@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
 const Register = () => {
     const { handleGoogleLogin, handleRegister, setUser, updateUserProfile } = useAuth();
@@ -11,7 +12,10 @@ const Register = () => {
 
     const handleSocialLogin = () => {
         handleGoogleLogin()
-            .then(res => navigate('/'))
+            .then(res => {
+                toast.success('Registration Successful!')
+                navigate('/')
+            })
     }
 
     const formRegister = (data) => {
@@ -22,6 +26,7 @@ const Register = () => {
                 console.log(user);
                 setUser(user);
                 updateUserProfile({ displayName: name, photoURL: photoURL })
+                toast.success('Registration Successful!')
             })
             .catch(err=> console.log(err))
     }
@@ -36,19 +41,33 @@ const Register = () => {
                 <form onSubmit={handleSubmit(formRegister)} className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block">Username</label>
-                        <input {...register('username')} type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('username', { required: "username is required!" })} type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        {errors.username && <p className='text-sm text-red-500'>{errors.username.message}</p>}
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block">Email</label>
-                        <input {...register('email')} type="email" name="email" id="email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('email', {required: "Email is required!"})} type="email" name="email" id="email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        {errors.email && <p className='text-sm text-red-500'>{errors.email.message}</p>}
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="photoURL" className="block">Photo URL</label>
-                        <input {...register('photoURL')} type="url" name="photoURL" id="photoURL" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('photoURL', { required: "PhotoURL is required!" })} type="url" name="photoURL" id="photoURL" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        {errors.photoURL && <p className='text-sm text-red-500'>{errors.photoURL.message}</p>}
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block">Password</label>
-                        <input {...register('password')} type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('password', {
+                            required: "Password is required!",
+                            validate: {
+                                hasUpperCase: (value) =>
+                                    /[A-Z]/.test(value) || "Must include at least one uppercase letter",
+                                hasLoweCase: (value) =>
+                                    /[a-z]/.test(value) || "Must include at least one lowercase letter",
+                                isLongEnough: (value) =>
+                                    value.length >= 6 || "Must be at least 6 characters long",
+                            }
+                        })} type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        {errors.password && <p className='text-sm text-red-500'>{errors.password.message}</p>}
                         <div className="flex justify-end text-xs">
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
