@@ -1,19 +1,35 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../Hooks/useAuth';
 
 const Login = () => {
+    const { handleLogin, setUser } = useAuth();
+    const { register, handleSubmit } = useForm();
+
+    const loginForm = (data) => {
+        const { email, password } = data;
+        handleLogin(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                setUser(user);
+            })
+            .catch(err=> console.log(err))
+    }
+
     return (
         <div className="bg-world min-h-screen flex justify-center items-center bg-no-repeat bg-cover">
             <div className="w-11/12 mx-auto max-w-md p-8 space-y-3 bg-accent text-primary">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
-                <form noValidate="" action="" className="space-y-6">
+                <form onSubmit={handleSubmit(loginForm)} className="space-y-6">
                     <div className="space-y-1 text-sm">
-                        <label htmlFor="username" className="block">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <label htmlFor="email" className="block">Email</label>
+                        <input {...register('email')} type="email" name="email" id="email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('password')} type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         <div className="flex justify-end text-xs">
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
