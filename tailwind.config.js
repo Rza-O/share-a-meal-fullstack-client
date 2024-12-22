@@ -17,7 +17,9 @@ export default {
       },
       backgroundImage: {
         'world': "url('/src/assets/loginWorld.svg')",
-        'looking': "url('/src/assets/looking.svg')"
+        'looking': "url('/src/assets/looking.svg')",
+        'sprinkle': "url('/src/assets/SprinkleBg.svg')",
+        'volunteer': "url('/src/assets/volunteer.jpg')",
       }
     },
   },
