@@ -11,10 +11,13 @@ export default {
         shrimp: "Nunito"
       },
       colors: {
-        'primary': '#69247C',
-        'secondary': '#DA498D',
-        'accent': '#FAC67A',
-        'background': '#F9E6CF'
+        'primary': '#244034',
+        'secondary': '#d0f04b',
+        'accent': '#f2f9d8',
+      },
+      backgroundImage: {
+        'world': "url('/src/assets/loginWorld.svg')",
+        'looking': "url('/src/assets/looking.svg')"
       }
     },
   },
