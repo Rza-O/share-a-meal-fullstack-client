@@ -1,38 +1,54 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import { useForm } from 'react-hook-form';
 
 const Register = () => {
-    const { handleGoogleLogin } = useAuth();
+    const { handleGoogleLogin, handleRegister, setUser, updateUserProfile } = useAuth();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const navigate = useNavigate();
 
     const handleSocialLogin = () => {
         handleGoogleLogin()
-            .then(res=> navigate('/'))
+            .then(res => navigate('/'))
     }
+
+    const formRegister = (data) => {
+        const { name, email, password, photoURL } = data;
+        handleRegister(email, password)
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+                setUser(user);
+                updateUserProfile({ displayName: name, photoURL: photoURL })
+            })
+            .catch(err=> console.log(err))
+    }
+
+
 
     return (
         <div className="bg-looking min-h-screen flex justify-center items-center bg-no-repeat bg-cover">
             <div className="w-11/12 mx-auto max-w-md p-8 space-y-3 bg-accent text-primary">
                 <h1 className="text-2xl font-bold text-center">Welcome to Share-A-Meal</h1>
                 <p className='font-semibold text-center'>Please Register to use our website</p>
-                <form noValidate="" action="" className="space-y-6">
+                <form onSubmit={handleSubmit(formRegister)} className="space-y-6">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block">Username</label>
-                        <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('username')} type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block">Email</label>
-                        <input type="email" name="email" id="email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('email')} type="email" name="email" id="email" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="photoURL" className="block">Photo URL</label>
-                        <input type="url" name="photoURL" id="photoURL" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('photoURL')} type="url" name="photoURL" id="photoURL" placeholder="Email Address" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block">Password</label>
-                        <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <input {...register('password')} type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         <div className="flex justify-end text-xs">
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
