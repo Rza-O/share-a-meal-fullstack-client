@@ -20,6 +20,7 @@ export default {
         'looking': "url('/src/assets/looking.svg')",
         'sprinkle': "url('/src/assets/SprinkleBg.svg')",
         'volunteer': "url('/src/assets/volunteer.jpg')",
+        'harvesting': "url('/src/assets/foodharvest.svg')",
       }
     },
   },
