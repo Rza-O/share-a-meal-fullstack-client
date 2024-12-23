@@ -56,7 +56,7 @@ const FoodDetails = () => {
                     
                 </div>
             </div>
-            {isModalOpen && <RequestModal isModalOpen={isModalOpen} setModalOpen={setModalOpen}></RequestModal>}
+            {isModalOpen && <RequestModal food={food} isModalOpen={isModalOpen} setModalOpen={setModalOpen}></RequestModal>}
         </div>
     );
 };
