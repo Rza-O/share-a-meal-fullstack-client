@@ -39,7 +39,7 @@ const AddFood = () => {
         </div>
         <div className="flex flex-col  w-1/2  p-6 rounded-md sm:p-10 bg-accent/80">
           <div className="mb-8 text-center">
-            <h1 className="my-3 text-4xl font-bold">Every Meal Matters</h1>
+            <h1 className="my-3 text-5xl font-bold font-lobster">Every Meal Matters</h1>
             <p className="text-sm dark:text-gray-600">Got extra food? Don’t let it go to waste. Share the details below to ensure your surplus reaches those who need it most</p>
           </div>
           <form onSubmit={handleSubmit(handleAddFood)} className="space-y-12">
