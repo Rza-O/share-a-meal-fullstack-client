@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import FoodCard from '../Components/FoodCard';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
@@ -10,6 +10,7 @@ const AvailableFoods = () => {
   const axiosSecure = useAxiosSecure();
   const [search, setSearch] = useState('');
   const [sortOrder, setSortOrder] = useState(null);
+  const searchRef = useRef();
 
 
   const fetchFoods = async () => {
@@ -25,13 +26,25 @@ const AvailableFoods = () => {
   const { data: foods, isLoading, error } = useQuery({
     queryKey: ['allFoods', search, sortOrder],
     queryFn: fetchFoods,
+    keepPreviousData: true,
   })
   if (isLoading) {
     return <Loading></Loading>
   }
 
-  
+  const handleSearch = (e) => {
+    e.preventDefault;
+    setSearch(searchRef.current.value);
+  }
 
+  const handleSortToggle = () => {
+    setSortOrder((prev)=> prev === 'desc' ? 'asc' : 'desc')
+  }
+
+  const handleReset = () => {
+    setSearch('');
+    setSortOrder(null)
+  }
 
 
   return (
@@ -44,28 +57,32 @@ const AvailableFoods = () => {
           <div>
             <div>
               <div className='flex flex-col md:flex-row justify-center items-center gap-5 '>
-                <form>
+                <form onSubmit={handleSearch}>
                   <div className='flex relative p-1 overflow-hidden border rounded-lg items-center  focus-within:ring focus-within:ring-opacity-40 focus-within:border-secondary focus-within:ring-secondary'>
                     <input
                       className='px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent'
                       type='text'
                       name='search'
+                      defaultValue={search}
+                      ref={searchRef}
                       placeholder='Enter Food Title'
                       aria-label='Enter Food Title'
                     />
-                    <div className='absolute right-4'><FaSearch className='text-primary' /></div>
-
+                    {/* <div className='absolute right-4'><FaSearch className='text-primary' /></div> */}
+                    <button type='submit' className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                      Search
+                    </button>
                   </div>
                 </form>
                 <div>
-                  <button className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
+                  <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
                 </div>
                 <div>
                   <button className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary'>
                     <LuLayoutGrid />
                   </button>
                 </div>
-                <button className='btn bg-primary text-white hover:text-secondary hover:bg-primary'>Reset</button>
+                <button onClick={handleReset} className='btn bg-primary text-white hover:text-secondary hover:bg-primary'>Reset</button>
               </div>
             </div>
           </div>
