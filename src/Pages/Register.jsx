@@ -19,16 +19,18 @@ const Register = () => {
     }
 
     const formRegister = (data) => {
-        const { name, email, password, photoURL } = data;
+        const { username, email, password, photoURL } = data;
         handleRegister(email, password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
                 setUser(user);
-                updateUserProfile({ displayName: name, photoURL: photoURL })
+                updateUserProfile({ displayName: username, photoURL: photoURL })
                 toast.success('Registration Successful!')
             })
-            .catch(err=> console.log(err))
+            .catch(err => {
+                toast.error(err.message)
+            })
     }
 
 
