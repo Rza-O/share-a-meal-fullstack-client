@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../Components/Loading';
 import { format } from 'date-fns';
+import RequestModal from '../Components/RequestModal';
 
 const FoodDetails = () => {
     const {id} = useParams();
     const axiosSecure = useAxiosSecure();
+    const [isModalOpen, setModalOpen] = useState(false);
 
     const fetchSingleFood = async () => {
         const { data } = await axiosSecure.get(`/food/${id}`)
@@ -43,15 +45,18 @@ const FoodDetails = () => {
                 <div className='space-y-5 flex flex-col justify-around items-center text-center'>
                     <h1 className='text-5xl font-bold'>{foodName}</h1>
                     <h3 className='text-3xl font-bold'>{foodQuantity} / Servings</h3>
+                    <p className='w-4/5 text-left'>{notes}</p>
                     <p className='badge badge-outline border-primary'>{status}</p>
-                    <p className='text-lg'>Donor name: { donor?.name }</p>
-                    <p className='text-lg'>Donor mail: { donor?.email }</p>
-                    <p className='text-lg' >Pickup location: {location}</p>
-                    <p className='text-lg'>Expiry Date: {format(new Date(expiryDate), "PP") }</p>
-                    <p className='w-3/4'>Notes: {notes}</p>
-                    <button className='btn btn-wide bg-secondary hover:bg-accent'>Request Food</button>
+                    <p className='text-lg'><span className='font-semibold'>Donor name:</span> { donor?.name }</p>
+                    <p className='text-lg'><span className='font-semibold'>Donor mail:</span> { donor?.email }</p>
+                    <p className='text-lg' ><span className='font-semibold'>Pickup location:</span> {location}</p>
+                    <p className='text-lg'><span className='font-semibold'>Expiry Date:</span> {format(new Date(expiryDate), "PP") }</p>
+                    
+                    <button onClick={() => setModalOpen(true)} className='btn btn-wide bg-secondary hover:bg-accent'>Request Food</button>
+                    
                 </div>
             </div>
+            {isModalOpen && <RequestModal isModalOpen={isModalOpen} setModalOpen={setModalOpen}></RequestModal>}
         </div>
     );
 };
