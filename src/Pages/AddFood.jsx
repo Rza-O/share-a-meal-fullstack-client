@@ -11,7 +11,7 @@ import toast from 'react-hot-toast';
 const AddFood = () => {
   const { user } = useAuth();
   const [expiryDate, setExpiryDate] = useState(new Date());
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const handleAddFood = async (data) => {
     // console.log({ ...data, expiryDate });
@@ -21,6 +21,7 @@ const AddFood = () => {
       const {data } = await axios.post('http://localhost:9000/add-foods', formData)
       console.log(data);
       toast.success('Food added successfully!')
+      reset();
     } catch (err) {
       console.log(err);
       toast.error(err.message)
@@ -55,7 +56,7 @@ const AddFood = () => {
               </div>
               {/* food quantity */}
               <div>
-                <label htmlFor="foodQuantity" className="block mb-2 text-sm">Food Quantity</label>
+                <label htmlFor="foodQuantity" className="block mb-2 text-sm">Food Quantity(servings)</label>
                 <input {...register('foodQuantity')} type="number" name="foodQuantity" id="foodQuantity" placeholder="Food Quantity" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
               </div>
               {/* pickup location */}

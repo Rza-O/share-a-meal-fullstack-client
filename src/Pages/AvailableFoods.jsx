@@ -1,9 +1,10 @@
 import React from 'react';
+import FoodCard from '../Components/FoodCard';
 
 const AvailableFoods = () => {
     return (
         <div>
-            this is all food page
+            <FoodCard></FoodCard>
         </div>
     );
 };
