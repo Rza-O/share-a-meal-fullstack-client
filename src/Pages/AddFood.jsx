@@ -5,6 +5,8 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const AddFood = () => {
   const { user } = useAuth();
@@ -14,11 +16,14 @@ const AddFood = () => {
   const handleAddFood = async (data) => {
     // console.log({ ...data, expiryDate });
     // const { foodName, foodImg, foodQuantity, location, notes } = data;
-    const formData = { ...data, expiryDate, foodStatus: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
+    const formData = { ...data, expiryDate, status: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
     try {
-      await 
-    } catch (error) {
-      
+      const {data } = await axios.post('http://localhost:9000/add-foods', formData)
+      console.log(data);
+      toast.success('Food added successfully!')
+    } catch (err) {
+      console.log(err);
+      toast.error(err.message)
     }
   }
 
@@ -36,7 +41,7 @@ const AddFood = () => {
             <h1 className="my-3 text-4xl font-bold">Every Meal Matters</h1>
             <p className="text-sm dark:text-gray-600">Got extra food? Don’t let it go to waste. Share the details below to ensure your surplus reaches those who need it most</p>
           </div>
-          <form onClick={handleSubmit(handleAddFood)} className="space-y-12">
+          <form onSubmit={handleSubmit(handleAddFood)} className="space-y-12">
             <div className="space-y-4">
               {/* Food Name */}
               <div>
@@ -78,7 +83,7 @@ const AddFood = () => {
             </div>
             <div className="space-y-2">
               <div>
-                <button type="button" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-secondary text-black">Add Food</button>
+                <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-secondary text-black">Add Food</button>
               </div>
             </div>
           </form>
