@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Loading from '../Components/Loading';
 import { format } from 'date-fns';
 import RequestModal from '../Components/RequestModal';
@@ -10,6 +10,7 @@ const FoodDetails = () => {
     const {id} = useParams();
     const axiosSecure = useAxiosSecure();
     const [isModalOpen, setModalOpen] = useState(false);
+    const queryClient = useQueryClient();
 
     const fetchSingleFood = async () => {
         const { data } = await axiosSecure.get(`/food/${id}`)
@@ -17,7 +18,7 @@ const FoodDetails = () => {
     }
 
     const { data: food, isLoading } = useQuery({
-        queryKey: ['food'],
+        queryKey: ['food', id],
         queryFn: fetchSingleFood
     })
     if (isLoading) {
@@ -56,7 +57,11 @@ const FoodDetails = () => {
                     
                 </div>
             </div>
-            {isModalOpen && <RequestModal food={food} isModalOpen={isModalOpen} setModalOpen={setModalOpen}></RequestModal>}
+            {isModalOpen && <RequestModal
+                onSuccess={()=> queryClient.invalidateQueries(['food', id])}
+                food={food}
+                isModalOpen={isModalOpen}
+                setModalOpen={setModalOpen}></RequestModal>}
         </div>
     );
 };

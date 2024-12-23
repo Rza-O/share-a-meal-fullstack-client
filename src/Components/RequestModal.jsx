@@ -5,7 +5,7 @@ import { useMutation } from '@tanstack/react-query';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import toast from 'react-hot-toast';
 
-const RequestModal = ({ isModalOpen, setModalOpen, food }) => {
+const RequestModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure()
   const [requestNote, setRequestNote] = useState('');
@@ -19,7 +19,8 @@ const RequestModal = ({ isModalOpen, setModalOpen, food }) => {
     },
     onSuccess: () => {
       toast.success('Food has been requested Successfully!')
-      setModalOpen(false);
+      // setModalOpen(false);
+      if (onSuccess) onSuccess();
     },
     onError: (error) => {
       toast.error(`Request failed: ${error.message}`);
@@ -76,7 +77,7 @@ const RequestModal = ({ isModalOpen, setModalOpen, food }) => {
               <input
                 type="url"
                 className="input input-bordered w-full"
-                Value={food?.foodImg}
+                value={food?.foodImg}
                 readOnly
               />
             </div>
