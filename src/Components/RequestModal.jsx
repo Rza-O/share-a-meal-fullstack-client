@@ -1,10 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from '../Hooks/useAuth';
 import { format } from 'date-fns';
+import { useMutation } from '@tanstack/react-query';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 const RequestModal = ({ isModalOpen, setModalOpen, food }) => {
   const { user } = useAuth();
-  const requesterEmail = user?.email
+  const axiosSecure = useAxiosSecure()
+  const [requestNote, setRequestNote] = useState('');
+  const requesterEmail = user?.email;
+
+  // useMutation to patch a data
+  const { mutate, isLoading } = useMutation({
+    mutationFn: async (requestData) => {
+      const { data } = await axiosSecure.patch(`/food/${food._id}`, requestData);
+      return data
+    },
+    onSuccess: () => {
+      toast.success('Food has been requested Successfully!')
+      setModalOpen(false);
+    },
+    onError: (error) => {
+      toast.error(`Request failed: ${error.message}`);
+    }
+  })
+
+  const handleRequest = () => {
+    const requestData = {
+      status: 'requested',
+      requester: {
+        requesterEmail,
+        requestDate: new Date().toISOString(),
+        requestNote
+      }
+    }
+    mutate(requestData);
+  }
+
+
   console.log(food);
   return (
     <div>
@@ -113,6 +147,8 @@ const RequestModal = ({ isModalOpen, setModalOpen, food }) => {
             <div className="mb-4">
               <label className="block text-sm">Additional Request Notes</label>
               <textarea
+                value={requestNote}
+                onChange={(e) => setRequestNote(e.target.value)}
                 className="textarea textarea-bordered w-full"
                 placeholder="Add any additional notes..."
               />
@@ -122,9 +158,11 @@ const RequestModal = ({ isModalOpen, setModalOpen, food }) => {
             <div className="modal-action">
               <button
                 type="button"
+                onClick={handleRequest}
+                disabled={isLoading}
                 className="btn bg-secondary text-primary hover:bg-accent"
               >
-                Request
+                {isLoading ? 'Requesting...' : 'Request'}
               </button>
             </div>
           </form>
