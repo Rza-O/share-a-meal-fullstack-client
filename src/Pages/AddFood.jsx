@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import foodDonation from '../assets/donatingFood.jpg';
 import volunteer from '../assets/volunteer.jpg';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from 'react-hook-form';
+import useAuth from '../Hooks/useAuth';
 
 const AddFood = () => {
+  const { user } = useAuth();
+  const [expiryDate, setExpiryDate] = useState(new Date());
+  const { register, handleSubmit } = useForm();
+
+  const handleAddFood = async (data) => {
+    // console.log({ ...data, expiryDate });
+    // const { foodName, foodImg, foodQuantity, location, notes } = data;
+    const formData = { ...data, expiryDate, foodStatus: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
+    try {
+      await 
+    } catch (error) {
+      
+    }
+  }
+
   return (
     <div className='bg-sprinkle min-h-svh flex items-center'>
       <div className='flex w-11/12 mx-auto'>
@@ -17,48 +36,50 @@ const AddFood = () => {
             <h1 className="my-3 text-4xl font-bold">Every Meal Matters</h1>
             <p className="text-sm dark:text-gray-600">Got extra food? Don’t let it go to waste. Share the details below to ensure your surplus reaches those who need it most</p>
           </div>
-          <form noValidate="" action="" className="space-y-12">
+          <form onClick={handleSubmit(handleAddFood)} className="space-y-12">
             <div className="space-y-4">
               {/* Food Name */}
               <div>
                 <label htmlFor="foodName" className="block mb-2 text-sm">Food Name</label>
-                <input type="text" name="foodName" id="foodName" placeholder="Food Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('foodName')} type="text" name="foodName" id="foodName" placeholder="Food Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
               </div>
               {/* food image */}
               <div>
-                <label htmlFor="foodImg" className="block mb-2 text-sm">Food Name</label>
-                <input type="url" name="foodImg" id="foodImg" placeholder="Food Image" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <label htmlFor="foodImg" className="block mb-2 text-sm">Food Image</label>
+                <input {...register('foodImg')} type="url" name="foodImg" id="foodImg" placeholder="Food Image" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
               </div>
               {/* food quantity */}
               <div>
                 <label htmlFor="foodQuantity" className="block mb-2 text-sm">Food Quantity</label>
-                <input type="number" name="foodQuantity" id="foodQuantity" placeholder="Food Quantity" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('foodQuantity')} type="number" name="foodQuantity" id="foodQuantity" placeholder="Food Quantity" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
               </div>
               {/* pickup location */}
               <div>
                 <label htmlFor="location" className="block mb-2 text-sm">Pickup Location</label>
-                <input type="text" name="location" id="location" placeholder="Pickup Location" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('location')} type="text" name="location" id="location" placeholder="Pickup Location" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
               </div>
               {/* Expired Date */}
-              <div>
-                <label htmlFor="location" className="block mb-2 text-sm">Expired Date</label>
-                <input type="text" name="location" id="location" placeholder="expired date" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+              <div className=''>
+                <label htmlFor="expiryDate" className="mb-2 block text-black text-sm ">Expired Date</label>
+                <DatePicker
+                  className='border p-2 text-black rounded-md'
+                  selected={expiryDate}
+                  onChange={date => setExpiryDate(date)}
+                />
+                {/* <input type="text" name="location" id="location" placeholder="expired date" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" /> */}
               </div>
               <div>
                 {/* additional notes */}
                 <div className="flex justify-between mb-2">
                   <label htmlFor="notes" className="text-sm">Additional Notes</label>
                 </div>
-                <textarea name="notes" id="notes" placeholder="Additional notes" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <textarea {...register('notes')} name="notes" id="notes" placeholder="Additional notes" className="w-full px-3 py-2  border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 textarea textarea-lg" />
               </div>
             </div>
             <div className="space-y-2">
               <div>
-                <button type="button" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50">Sign in</button>
+                <button type="button" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-secondary text-black">Add Food</button>
               </div>
-              <p className="px-6 text-sm text-center dark:text-gray-600">Don't have an account yet?
-                <a rel="noopener noreferrer" href="#" className="hover:underline dark:text-violet-600">Sign up</a>.
-              </p>
             </div>
           </form>
         </div>
