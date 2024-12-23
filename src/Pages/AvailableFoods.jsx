@@ -2,6 +2,7 @@ import React from 'react';
 import FoodCard from '../Components/FoodCard';
 import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import Loading from '../Components/Loading';
 
 const AvailableFoods = () => {
     const axiosSecure = useAxiosSecure();
@@ -14,7 +15,7 @@ const AvailableFoods = () => {
         queryFn: fetchFoods,
     })
     if (isLoading) {
-        return <div>Loading</div>
+        return <Loading></Loading>
     }
     console.log(foods);
     return (
