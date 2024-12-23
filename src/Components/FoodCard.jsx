@@ -20,7 +20,7 @@ const FoodCard = ({food}) => {
                     <p className='font-semibold'>Location: { food.location }</p>
                     <p className='font-semibold'>Expiry Date: {format(new Date(food.expiryDate), "P") }</p>
                 </div>
-                <button  type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-primary text-gray-50">View Details</button>
+                <button  type="button" className="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md bg-primary text-gray-50 btn hover:bg-primary hover:text-secondary">View Details</button>
             </div>
         </div>
     );
