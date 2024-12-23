@@ -26,7 +26,6 @@ const AvailableFoods = () => {
   const { data: foods, isLoading, error } = useQuery({
     queryKey: ['allFoods', search, sortOrder],
     queryFn: fetchFoods,
-    keepPreviousData: true,
   })
   if (isLoading) {
     return <Loading></Loading>
