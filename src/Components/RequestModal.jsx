@@ -19,7 +19,7 @@ const RequestModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
     },
     onSuccess: () => {
       toast.success('Food has been requested Successfully!')
-      // setModalOpen(false);
+      setModalOpen(false);
       if (onSuccess) onSuccess();
     },
     onError: (error) => {
@@ -163,7 +163,7 @@ const RequestModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
                 disabled={isLoading}
                 className="btn bg-secondary text-primary hover:bg-accent"
               >
-                {isLoading ? 'Requesting...' : 'Request'}
+                Request
               </button>
             </div>
           </form>
