@@ -8,7 +8,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from 'react-hook-form';
 
-const UpdateModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
+const UpdateModal = ({ isModalOpen, setModalOpen, food }) => {
     console.log(food);
     const { user } = useAuth();
     const queryClient = useQueryClient();
@@ -28,7 +28,6 @@ const UpdateModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
             toast.success('Food has been requested Successfully!')
             setModalOpen(false);
             queryClient.invalidateQueries(['myAllFoods'])
-            // if (onSuccess) onSuccess();
         },
         onError: (error) => {
             toast.error(`Request failed: ${error.message}`);
@@ -37,9 +36,6 @@ const UpdateModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
 
     const handleRequest = (data) => {
         const requestData = { ...data, expiryDate };
-        // const requestData = {
-            
-        // }
         mutate(requestData);
     }
 
@@ -53,6 +49,16 @@ const UpdateModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
                     </form>
                     <h2 className="text-2xl font-bold mb-4 text-center">Update Food Details</h2>
                     <form onSubmit={handleSubmit(handleRequest)}>
+                        {/* Donar Email */}
+                        <div className="mb-4">
+                            <label className="block text-sm">Donor Email</label>
+                            <input
+                                type="text"
+                                className="input input-bordered w-full"
+                                value={user?.email}
+                                readOnly
+                            />
+                        </div>
                         {/* food name */}
                         <div className="mb-4">
                             <label className="block text-sm">Food Name</label>
@@ -121,7 +127,7 @@ const UpdateModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
                                 type="submit"
                                 className="btn bg-secondary text-primary hover:bg-accent"
                             >
-                                Request
+                                Update
                             </button>
                         </div>
                     </form>

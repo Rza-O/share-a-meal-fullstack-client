@@ -36,7 +36,7 @@ const ManageMyFood = () => {
         <p className='text-sm font-semibold'>Easily track and manage the food items you’ve donated. Keep your contributions organized and make a difference!</p>
       </div>
 
-
+      
       {/* Table Starts here */}
       <section className="container px-4 mx-auto">
         <div className="flex flex-col">
@@ -46,25 +46,25 @@ const ManageMyFood = () => {
                 <table className="min-w-full divide-y divide-gray-200 ">
                   <thead className="bg-accent ">
                     <tr>
-                      <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                      <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                         Food Name
                       </th>
-                      <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                      <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                         Expiry Date
                       </th>
 
-                      <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                      <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                         Status
                       </th>
 
-                      <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                      <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 ">
                         Location
                       </th>
 
-                      <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 F">
+                      <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 F">
                         Quantity
                       </th>
-                      <th scope="col" className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 F">
+                      <th scope="col" className="px-4 py-3.5 text-sm font-bold text-left rtl:text-right text-gray-500 F">
                         Actions
                       </th>
                     </tr>
