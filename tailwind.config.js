@@ -27,6 +27,31 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			animation: {
+				'shimmer-slide': 'shimmer-slide var(--speed) ease-in-out infinite alternate',
+				'spin-around': 'spin-around calc(var(--speed) * 2) infinite linear'
+			},
+			keyframes: {
+				'shimmer-slide': {
+					to: {
+						transform: 'translate(calc(100cqw - 100%), 0)'
+					}
+				},
+				'spin-around': {
+					'0%': {
+						transform: 'translateZ(0) rotate(0)'
+					},
+					'15%, 35%': {
+						transform: 'translateZ(0) rotate(90deg)'
+					},
+					'65%, 85%': {
+						transform: 'translateZ(0) rotate(270deg)'
+					},
+					'100%': {
+						transform: 'translateZ(0) rotate(360deg)'
+					}
+				}
 			}
 		}
 	},
@@ -42,4 +67,14 @@ DA498D
 FAC67A
 F9E6CF
 4B4B4B
+ */
+
+/**
+ * backgroundImage: {
+				world: "url('/src/assets/loginWorld.svg')",
+				looking: "url('/src/assets/looking.svg')",
+				sprinkle: "url('/src/assets/SprinkleBg.svg')",
+				volunteer: "url('/src/assets/volunteer.jpg')",
+				harvesting: "url('/src/assets/foodharvest.svg')"
+			},
  */

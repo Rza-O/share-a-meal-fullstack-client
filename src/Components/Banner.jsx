@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import bannerImg from '../assets/bannerImg.jpg';
 import { Link } from "react-router-dom";
+import ShimmerButton from "./ui/shimmer-button";
 
 const Banner = () => {
     return (
@@ -42,9 +43,14 @@ const Banner = () => {
                     Every year, millions of meals go to waste while countless people go to bed hungry. Our mission is simple: bridge the gap between surplus and need.
                 </p>
                 <Link to='/add-food' >
-                    <button className="bg-accent text-primary font-medium py-2 px-4 rounded transition-all hover:bg-secondary active:scale-95">
+                    {/* <button className="bg-accent text-primary font-medium py-2 px-4 rounded transition-all hover:bg-secondary active:scale-95">
                         Add Foods
-                    </button>
+                    </button> */}
+                    <ShimmerButton background=' #d0f04b' shimmerColor='#166534' shimmerSize='0.1em'  className="shadow-2xl">
+                        <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-green-800 dark:from-white dark:to-slate-900/10 lg:text-lg">
+                            Donate Food Here
+                        </span>
+                    </ShimmerButton>
                 </Link>
             </div>
             <ShuffleGrid />
