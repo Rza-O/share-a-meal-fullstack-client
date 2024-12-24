@@ -13,7 +13,6 @@ const ManageMyFood = () => {
 
   const fetchDataMatchingDonor = async () => {
     const { data } = await axiosSecure.get(`/my-foods?email=${user.email}`)
-    console.log(data);
     return data
   }
 
