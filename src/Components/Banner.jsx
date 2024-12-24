@@ -8,7 +8,7 @@ const Banner = () => {
     return (
         <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8  mx-auto bg-primary">
             <div>
-                <span className="block mb-4 text-xs md:text-sm text-accent font-medium">
+                <span className="block mb-4 text-xs md:text-lg text-accent font-medium font-lobster">
                     Better world every day
                 </span>
                 {/* <h3 className="text-4xl md:text-6xl font-semibold text-secondary">
@@ -47,7 +47,7 @@ const Banner = () => {
                         Add Foods
                     </button> */}
                     <ShimmerButton background=' #d0f04b' shimmerColor='#166534' shimmerSize='0.1em'  className="shadow-2xl">
-                        <span className="whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-green-800 dark:from-white dark:to-slate-900/10 lg:text-lg">
+                        <span className="font-lobster whitespace-pre-wrap text-center text-md font-medium leading-none tracking-tight text-green-800 dark:from-white dark:to-slate-900/10 lg:text-xl">
                             Donate Food Here
                         </span>
                     </ShimmerButton>

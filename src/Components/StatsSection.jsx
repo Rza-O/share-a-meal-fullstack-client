@@ -13,7 +13,7 @@ const StatsSection = () => {
     return (
         <section className="py-12 bg-accent">
             <div className="container mx-auto text-center">
-                <h2 className="text-2xl font-medium text-green-800 mb-4">
+                <h2 className="text-3xl font-lobster font-medium text-green-800 mb-4">
                     Make an Impact with Your Actions
                 </h2>
                 <motion.div
@@ -35,7 +35,7 @@ const StatsSection = () => {
                                 visible: { opacity: 1, y: 0 },
                             }}
                         >
-                            <h3 className="text-4xl font-bold text-gray-800">
+                            <h3 className="text-2xl font-lobster md:text-4xl font-bold text-gray-800">
                                 <NumberTicker value={stat.value} duration={2}  />{stat.suffix}
                             </h3>
                             <p className="mt-2 text-gray-500">{stat.label}</p>
