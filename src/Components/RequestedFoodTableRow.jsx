@@ -1,18 +1,57 @@
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { format } from 'date-fns';
 import React from 'react';
 import { MdCancelScheduleSend } from 'react-icons/md';
-
-/**
- * 
- * Donar Name 
-Pickup Location
-Expire Date
-Request Date 
- */
+import useAxiosSecure from '../Hooks/useAxiosSecure';
+import toast from 'react-hot-toast';
 
 
 const RequestedFoodTableRow = ({ myFood }) => {
     const { foodName, expiryDate, status, location, foodQuantity: quantity, _id, donor, requester } = myFood;
+    const queryClient = useQueryClient();
+    const axiosSecure = useAxiosSecure();
+
+    const { mutate } = useMutation({
+        mutationFn: async (id) => {
+            const { data } = axiosSecure.patch(`/cancel-request/${id}`)
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['myRequests']);
+            queryClient.refetchQueries(['myRequests']);
+            toast.success("Food has been cancelled!")
+        },
+        onError: () => {
+            toast.error('Failed to cancel the food. Please try again!')
+        }
+    })
+
+    const handleCancel = () => {
+        toast((t) => (
+            <span className='flex flex-col gap-2'>
+                <p>Are you sure you want to cancel the food?</p>
+                <div className='flex justify-end gap-2'>
+                    <button
+                        onClick={() => {
+                            mutate(_id);
+                            toast.dismiss(t.id);
+                        }}
+                        className='px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600'
+                    >Yes</button>
+                    <button
+                        onClick={() => toast.dismiss(t.id)}
+                        className='px-3 py-1 bg-gray-300 text-white rounded hover:bg-gray-400'
+                    >Cancel</button>
+                </div>
+            </span>
+        ),
+            {
+                duration: Infinity,
+            })
+    }
+
+
+
+
     return (
         <tr>
             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -22,13 +61,8 @@ const RequestedFoodTableRow = ({ myFood }) => {
             </td>
             <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">{format(new Date(expiryDate), 'PP')}</td>
             <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                {/* <div className={`inline-flex items-center px-3 py-1 rounded-full gap-x-2 ${status === 'available' ? 'text-emerald-500 bg-emerald-100/60' : 'text-yellow-500 bg-accent'} `}>
-                    {status === 'available' && <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>}
 
-                </div> */}
-                    <h2 className=" font-bold">{donor.name}</h2>
+                <h2 className=" font-bold">{donor.name}</h2>
             </td>
             <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                 {location}
@@ -38,23 +72,10 @@ const RequestedFoodTableRow = ({ myFood }) => {
             {/* button */}
             <td className="px-4 py-4 text-sm whitespace-nowrap">
                 <div className="flex items-center gap-x-6">
-
-                    {/* edit button */}
-                    {/* <button onClick={() => setModalOpen(true)} className="text-gray-500 transition-colors duration-200  hover:text-secondary focus:outline-none">
-                        <FaEdit className='text-xl'></FaEdit>
-                    </button> */}
-
                     {/* delete button */}
-                    <button onClick={handleDelete} className="text-red-500 transition-colors duration-200 hover:text-primary focus:outline-none">
-                        {/* <MdDelete className='text-2xl'></MdDelete> */}
+                    <button onClick={handleCancel} className="text-red-500 transition-colors duration-200 hover:text-primary focus:outline-none">
                         <MdCancelScheduleSend className='text-2xl' />
-                        
                     </button>
-                    {/* {isModalOpen && <UpdateModal
-                        food={myFood}
-                        isModalOpen={isModalOpen}
-                        setModalOpen={setModalOpen}></UpdateModal>} */}
-
                 </div>
             </td>
         </tr>

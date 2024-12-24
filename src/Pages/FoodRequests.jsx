@@ -11,6 +11,7 @@ const FoodRequests = () => {
 
   const fetchRequestData = async () => {
     const { data } = await axiosSecure.get(`/my-foods?requestEmail=${user.email}`)
+    console.log(data);
     return data;
   }
 

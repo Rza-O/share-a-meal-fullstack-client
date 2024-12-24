@@ -28,8 +28,8 @@ const FoodDetails = () => {
     }
 
     const { foodName, foodImg, foodQuantity, location, notes, expiryDate, status, donor } = food;
-    const donorEmail = donor.email;
-    const currentUser = user.email;
+    const donorEmail = donor?.email;
+    const currentUser = user?.email;
 
     console.log(food);
 
