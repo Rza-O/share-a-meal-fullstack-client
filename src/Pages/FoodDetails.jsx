@@ -47,7 +47,7 @@ const FoodDetails = () => {
                     <h1 className='text-5xl font-bold'>{foodName}</h1>
                     <h3 className='text-3xl font-bold'>{foodQuantity} / Servings</h3>
                     <p className='w-4/5 text-left'>{notes}</p>
-                    <p className='badge badge-outline border-primary'>{status}</p>
+                    <p className='badge badge-outline badge-success'>{status}</p>
                     <p className='text-lg'><span className='font-semibold'>Donor name:</span> { donor?.name }</p>
                     <p className='text-lg'><span className='font-semibold'>Donor mail:</span> { donor?.email }</p>
                     <p className='text-lg' ><span className='font-semibold'>Pickup location:</span> {location}</p>
