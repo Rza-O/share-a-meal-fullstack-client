@@ -5,12 +5,14 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import Loading from '../Components/Loading';
 import { format } from 'date-fns';
 import RequestModal from '../Components/RequestModal';
+import useAuth from '../Hooks/useAuth';
 
 const FoodDetails = () => {
     const {id} = useParams();
     const axiosSecure = useAxiosSecure();
     const [isModalOpen, setModalOpen] = useState(false);
     const queryClient = useQueryClient();
+    const { user } = useAuth();
 
     const fetchSingleFood = async () => {
         const { data } = await axiosSecure.get(`/food/${id}`)
@@ -26,6 +28,8 @@ const FoodDetails = () => {
     }
 
     const { foodName, foodImg, foodQuantity, location, notes, expiryDate, status, donor } = food;
+    const donorEmail = donor.email;
+    const currentUser = user.email;
 
     console.log(food);
 
@@ -53,7 +57,9 @@ const FoodDetails = () => {
                     <p className='text-lg' ><span className='font-semibold'>Pickup location:</span> {location}</p>
                     <p className='text-lg'><span className='font-semibold'>Expiry Date:</span> {format(new Date(expiryDate), "PP") }</p>
                     
-                    <button onClick={() => setModalOpen(true)} className='btn btn-wide bg-secondary hover:bg-accent'>Request Food</button>
+                    {
+                        currentUser == donorEmail ? <button className='btn btn-wide bg-secondary hover:bg-accent disabled'>Thank You for adding this food!</button> : <button onClick={() => setModalOpen(true)} className='btn btn-wide bg-secondary hover:bg-accent'>Request Food</button>
+                    }
                     
                 </div>
             </div>
