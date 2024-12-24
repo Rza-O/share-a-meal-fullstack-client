@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import bannerImg from '../assets/bannerImg.jpg';
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
         <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8  mx-auto bg-primary">
             <div>
-                <span className="block mb-4 text-xs md:text-sm text-secondary font-medium">
-                    Better every day
+                <span className="block mb-4 text-xs md:text-sm text-accent font-medium">
+                    Better world every day
                 </span>
                 {/* <h3 className="text-4xl md:text-6xl font-semibold text-secondary">
                     Let's change it up a bit
@@ -15,7 +16,7 @@ const Banner = () => {
                 {/* { Fighting Hunger and Reducing Food Waste – Every Meal Counts} */}
                 <h1 className="max-w-2xl text-left text-5xl leading-snug text-secondary">
                     Join Us{" "}
-                    <span className="relative">
+                    <span className="relative text-accent">
                         Spreading
                         <svg
                             viewBox="0 0 286 73"
@@ -40,9 +41,11 @@ const Banner = () => {
                 <p className="text-base md:text-lg  my-4 md:my-6 text-accent">
                     Every year, millions of meals go to waste while countless people go to bed hungry. Our mission is simple: bridge the gap between surplus and need.
                 </p>
-                <button className="bg-indigo-500 text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
-                    Find a class
-                </button>
+                <Link to='/add-food' >
+                    <button className="bg-accent text-primary font-medium py-2 px-4 rounded transition-all hover:bg-secondary active:scale-95">
+                        Add Foods
+                    </button>
+                </Link>
             </div>
             <ShuffleGrid />
         </section>
