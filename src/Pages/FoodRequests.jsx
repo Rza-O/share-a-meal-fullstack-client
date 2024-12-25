@@ -12,7 +12,7 @@ const FoodRequests = () => {
   const { user, loading } = useAuth();
 
   const fetchRequestData = async () => {
-    const { data } = await axiosSecure.get(`/my-foods?requestEmail=${user.email}`)
+    const { data } = await axiosSecure.get(`/my-requests?requestEmail=${user.email}`)
     console.log(data);
     return data;
   }

@@ -46,7 +46,7 @@ const AvailableFoods = () => {
     setToggleGrid(false);
     setSortOrder(null)
   }
-  console.log(toggleGrid);
+  console.log(foods);
 
 
   return (
