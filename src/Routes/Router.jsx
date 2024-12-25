@@ -9,12 +9,14 @@ import AddFood from '../Pages/AddFood';
 import ManageMyFood from '../Pages/ManageMyFood';
 import FoodRequests from '../Pages/FoodRequests';
 import FoodDetails from '../Pages/FoodDetails';
-import PrivateRoute from '@/Private/PrivateRoute';
+import PrivateRoute from '../Private/PrivateRoute';
+import ErrorPage from '../Error/ErrorPage';
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout></MainLayout>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
