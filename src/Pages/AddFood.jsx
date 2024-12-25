@@ -32,14 +32,14 @@ const AddFood = () => {
 
   return (
     <div className='bg-sprinkle min-h-svh flex items-center'>
-      <div className='flex w-11/12 mx-auto'>
-        <div className="bg-volunteer bg-cover bg-no-repeat w-1/2 h-[800px]">
-          <div className='hero-overlay text-center h-full flex flex-col justify-center space-y-6 px-7'>
+      <div className='flex w-11/12 mx-auto flex-col lg:flex-row mt-5'>
+        <div className="bg-bannerBoy bg-cover  bg-no-repeat xl:w-1/2 ">
+          <div className='hero-overlay text-center h-full flex flex-col justify-center space-y-6 px-7 py-6'>
             <h1 className='text-5xl font-bold font-lobster text-secondary'>Be the Change, One Meal at a Time</h1>
             <p className='text-accent text-xl'>Add food items to our platform to bridge the gap between surplus and scarcity. Together, we can create a sustainable food-sharing community.</p>
           </div>
         </div>
-        <div className="flex flex-col  w-1/2  p-6 rounded-md sm:p-10 bg-accent/80">
+        <div className="flex flex-col  xl:w-1/2  p-6 rounded-md sm:p-10 bg-accent/80">
           <div className="mb-8 text-center">
             <h1 className="my-3 text-5xl font-bold font-lobster">Every Meal Matters</h1>
             <p className="text-sm dark:text-gray-600">Got extra food? Don’t let it go to waste. Share the details below to ensure your surplus reaches those who need it most</p>
