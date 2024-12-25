@@ -11,6 +11,7 @@ const AvailableFoods = () => {
   const [search, setSearch] = useState('');
   const [sortOrder, setSortOrder] = useState(null);
   const searchRef = useRef();
+  const [toggleGrid, setToggleGrid] = useState(false);
 
 
   const fetchFoods = async () => {
@@ -42,6 +43,7 @@ const AvailableFoods = () => {
 
   const handleReset = () => {
     setSearch('');
+    setToggleGrid(false);
     setSortOrder(null)
   }
 
@@ -68,7 +70,7 @@ const AvailableFoods = () => {
                       aria-label='Enter Food Title'
                     />
                     {/* <div className='absolute right-4'><FaSearch className='text-primary' /></div> */}
-                    <button type='submit' className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none'>
+                    <button type='submit' className='px-1 md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-primary rounded-md hover:text-secondary focus:bg-gray-600 focus:outline-none'>
                       Search
                     </button>
                   </div>
@@ -77,7 +79,7 @@ const AvailableFoods = () => {
                   <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
                 </div>
                 <div>
-                  <button className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary'>
+                  <button onClick={()=> setToggleGrid(!toggleGrid)} className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary'>
                     <LuLayoutGrid />
                   </button>
                 </div>
@@ -86,7 +88,7 @@ const AvailableFoods = () => {
             </div>
           </div>
         </div>
-        <div className='grid grid-cols-3 gap-5 place-items-center'>
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${toggleGrid && 'lg:grid-cols-2'} gap-5 place-items-center`}>
           {
             foods.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
           }

@@ -7,24 +7,26 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '@/Hooks/useAxiosSecure';
 
 const AddFood = () => {
   const { user } = useAuth();
   const [expiryDate, setExpiryDate] = useState(new Date());
   const { register, handleSubmit, reset } = useForm();
+  const axiosSecure = useAxiosSecure()
 
   const handleAddFood = async (data) => {
     // console.log({ ...data, expiryDate });
     // const { foodName, foodImg, foodQuantity, location, notes } = data;
     const formData = { ...data, foodQuantity: parseInt(data.foodQuantity), expiryDate, status: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
     try {
-      const { data } = await axios.post('http://localhost:9000/add-foods', formData)
+      const { data } = await axiosSecure.post('/add-foods', formData)
       console.log(data);
       toast.success('Food added successfully!')
       reset();
     } catch (err) {
       console.log(err);
-      toast.error(err.message)
+      toast.error(err.response.data.message)
     }
   }
 
@@ -84,7 +86,7 @@ const AddFood = () => {
             </div>
             <div className="space-y-2">
               <div>
-                <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md dark:bg-secondary text-black">Add Food</button>
+                <button type="submit" className="w-full px-8 py-3 font-semibold rounded-md bg-secondary text-black">Add Food</button>
               </div>
             </div>
           </form>
