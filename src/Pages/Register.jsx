@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -7,14 +7,14 @@ import toast from 'react-hot-toast';
 const Register = () => {
     const { handleGoogleLogin, handleRegister, setUser, updateUserProfile } = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const location = useLocation();
     const navigate = useNavigate();
 
     const handleSocialLogin = () => {
         handleGoogleLogin()
             .then(res => {
                 toast.success('Registration Successful!')
-                navigate('/')
+                navigate(location?.state ? location.state : '/')
             })
     }
 
@@ -27,6 +27,7 @@ const Register = () => {
                 setUser(user);
                 updateUserProfile({ displayName: username, photoURL: photoURL })
                 toast.success('Registration Successful!')
+                navigate(location?.state ? location.state : '/')
             })
             .catch(err => {
                 toast.error(err.message)
