@@ -58,7 +58,7 @@ const FoodDetails = () => {
                     <p className='text-lg'><span className='font-semibold'>Expiry Date:</span> {format(new Date(expiryDate), "PP") }</p>
                     
                     {
-                        currentUser == donorEmail ? <button className='btn btn-wide bg-secondary hover:bg-accent disabled'>Thank You for adding this food!</button> : <button onClick={() => setModalOpen(true)} className='btn btn-wide bg-secondary hover:bg-accent'>Request Food</button>
+                        currentUser == donorEmail ? <button className='btn btn-wide bg-secondary hover:bg-accent disabled'>Thank You for adding this food!</button> : food?.status === 'requested' ? <button className='btn btn-wide bg-gray-400 hover:bg-accent'>Requested</button> : <button onClick={() => setModalOpen(true)} className={'btn btn-wide bg-secondary hover:bg-accent'}>Request Food</button>
                     }
                     
                 </div>
