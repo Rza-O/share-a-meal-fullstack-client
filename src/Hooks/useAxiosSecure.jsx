@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 // http://localhost:9000/
 // https://share-a-meal-server.vercel.app/
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:9000/',
+    baseURL: 'https://share-a-meal-server.vercel.app/',
     withCredentials: true,
 
 });
