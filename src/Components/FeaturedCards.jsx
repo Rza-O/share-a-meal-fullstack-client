@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from "./ui/button";
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
 const FeaturedCards = ({food}) => {
-    const { foodName, foodImg, expiryDate, status, notes } = food;
+    const { foodName, foodImg, expiryDate, status, notes, _id } = food;
 
     return (
         <div className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden">
@@ -29,12 +30,14 @@ const FeaturedCards = ({food}) => {
                         </span>
                     </div>
                 </div>
-                <Button
-                    className="w-full mt-4 bg-primary text-white hover:bg-gray-800"
-                    size="lg"
-                >
-                    Donate Now
-                </Button>
+                <Link to={`/food/${_id}`}>
+                    <Button
+                        className="w-full mt-4 bg-primary text-white hover:bg-gray-800"
+                        size="lg"
+                    >
+                        View Details
+                    </Button>
+                </Link>
             </div>
         </div>
     );
