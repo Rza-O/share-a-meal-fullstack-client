@@ -34,8 +34,8 @@ const ManageMyFood = () => {
     <div className='bg-harvesting bg-no-repeat bg-contain bg-center min-h-screen w-11/12 mx-auto'>
       {
         myFoods.length < 1 ? <div className='p-14 flex flex-col justify-center items-center text-center gap-2 text-primary'>
-          <h1 className='font-lobster text-5xl'>You have not added any food yet!</h1>
-          <p className='text-lg'>Add food for others to request food...</p>
+          <h1 className='font-lobster text-5xl p-3 bg-accent'>You have not added any food yet!</h1>
+          <p className='text-lg bg-accent p-1'>Add food for others to request food...</p>
           <Link to='/add-food'>
             <PulsatingButton className='bg-primary' pulseColor='#244034'>Add Food</PulsatingButton>
           </Link>

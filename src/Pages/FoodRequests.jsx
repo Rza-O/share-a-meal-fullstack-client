@@ -34,8 +34,8 @@ const FoodRequests = () => {
       {
         myRequests.length < 1 ?
           <div className='p-14 flex flex-col justify-center items-center text-center gap-2 text-primary font-bold'>
-            <h1 className='font-lobster text-5xl'>You have not requested any food yet!</h1>
-            <p className='text-lg'>Checkout all available foods to request food...</p>
+            <h1 className='font-lobster text-5xl bg-accent p-3'>You have not requested any food yet!</h1>
+            <p className='text-lg bg-accent p-1'>Checkout all available foods to request food...</p>
             <Link to='/available-foods'>
               <PulsatingButton className='bg-primary' pulseColor='#244034'>Available Foods</PulsatingButton>
             </Link>

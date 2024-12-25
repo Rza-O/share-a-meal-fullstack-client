@@ -46,11 +46,12 @@ const AvailableFoods = () => {
     setToggleGrid(false);
     setSortOrder(null)
   }
+  console.log(toggleGrid);
 
 
   return (
     <div className='bg-accent'>
-      <div className=' space-y-12 pt-5 bg-center w-11/12 mx-auto min-h-screen'>
+      <div className=' space-y-12 pt-5 bg-center w-11/12 mx-auto min-h-screen pb-5'>
         <div className='text-center space-y-4'>
 
           <h2 className='font-lobster text-5xl font-bold text-primary'>Available Foods for Donation</h2>
@@ -80,7 +81,7 @@ const AvailableFoods = () => {
                     <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
                   </div>
                   <div>
-                    <button onClick={()=> setToggleGrid(!toggleGrid)} className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary'>
+                    <button onClick={()=> setToggleGrid(!toggleGrid)} className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary hidden lg:block'>
                       <LuLayoutGrid />
                     </button>
                   </div>
@@ -90,7 +91,7 @@ const AvailableFoods = () => {
             </div>
           </div>
         </div>
-        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ${toggleGrid && 'lg:grid-cols-2'} gap-5 place-items-center`}>
+        <div className={`grid  ${toggleGrid ? 'grid-cols-2' : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'} gap-5 place-items-center`}>
           {
             foods.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
           }

@@ -37,7 +37,7 @@ const Register = () => {
 
 
     return (
-        <div className="bg-looking min-h-screen flex justify-center items-center bg-no-repeat bg-cover">
+        <div className="bg-looking min-h-screen flex justify-center items-center bg-no-repeat bg-cover pb-6 pt-5">
             <div className="w-11/12 mx-auto max-w-md p-8 space-y-3 bg-accent text-primary">
                 <h1 className="text-2xl font-bold text-center">Welcome to Share-A-Meal</h1>
                 <p className='font-semibold text-center'>Please Register to use our website</p>

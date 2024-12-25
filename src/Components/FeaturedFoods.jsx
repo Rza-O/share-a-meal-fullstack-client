@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Loading from './Loading';
 import FeaturedCards from './FeaturedCards';
+import PulsatingButton from './ui/pulsating-button';
+import { Link } from 'react-router-dom';
 
 const FeaturedFoods = () => {
     const axiosSecure = useAxiosSecure();
@@ -25,6 +27,9 @@ const FeaturedFoods = () => {
                     featured.map(food=> <FeaturedCards key={food._id} food={food}></FeaturedCards>)
                 }
             </div>
+            <Link to='/available-foods'>
+                <PulsatingButton pulseColor='#213a2f' className='mt-5 bg-primary'>View All Foods</PulsatingButton>
+            </Link>
         </div>
     );
 };

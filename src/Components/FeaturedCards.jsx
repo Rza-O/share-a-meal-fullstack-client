@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { Link } from "react-router-dom";
 
 const FeaturedCards = ({food}) => {
-    const { foodName, foodImg, expiryDate, status, notes, _id } = food;
+    const { foodName, foodImg, expiryDate, status, notes, _id, foodQuantity: quantity } = food;
 
     return (
         <div className="max-w-sm bg-white rounded-lg shadow-md overflow-hidden">
@@ -14,9 +14,12 @@ const FeaturedCards = ({food}) => {
                 className="w-full h-48 object-cover"
             />
             <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-800">
-                    {foodName}
-                </h2>
+                <div className="flex items-center justify-between">
+                    <h2 className="text-xl font-semibold text-gray-800">
+                        {foodName}
+                    </h2>
+                    <p className="font-bold">Quantity: {quantity} serves</p>
+                </div>
                 <p className="mt-2 text-gray-600">
                     {notes.substring(0,100)}...
                 </p>
