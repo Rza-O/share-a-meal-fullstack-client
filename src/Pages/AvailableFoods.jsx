@@ -75,20 +75,22 @@ const AvailableFoods = () => {
                     </button>
                   </div>
                 </form>
-                <div>
-                  <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
+                <div className='flex gap-2'>
+                  <div>
+                    <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
+                  </div>
+                  <div>
+                    <button onClick={()=> setToggleGrid(!toggleGrid)} className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary'>
+                      <LuLayoutGrid />
+                    </button>
+                  </div>
+                  <button onClick={handleReset} className='btn bg-primary text-white hover:text-secondary hover:bg-primary'>Reset</button>
                 </div>
-                <div>
-                  <button onClick={()=> setToggleGrid(!toggleGrid)} className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary'>
-                    <LuLayoutGrid />
-                  </button>
-                </div>
-                <button onClick={handleReset} className='btn bg-primary text-white hover:text-secondary hover:bg-primary'>Reset</button>
               </div>
             </div>
           </div>
         </div>
-        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${toggleGrid && 'lg:grid-cols-2'} gap-5 place-items-center`}>
+        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ${toggleGrid && 'lg:grid-cols-2'} gap-5 place-items-center`}>
           {
             foods.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
           }
