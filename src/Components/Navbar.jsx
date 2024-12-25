@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import logo from '../assets/smallLogo.png';
 
 const Navbar = () => {
   const { user, handleLogOut } = useAuth();
@@ -48,7 +49,11 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Share<span className='text-secondary'>A</span>Meal</a>
+
+        <div className='flex justify-center items-center ml-3'>
+          <img src={logo} className='w-8 h-8' alt="" />
+          <a className="btn btn-ghost text-xl">Share<span className='text-secondary'>A</span>Meal</a></div>
+
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
