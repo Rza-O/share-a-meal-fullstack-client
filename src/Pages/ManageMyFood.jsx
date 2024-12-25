@@ -11,7 +11,7 @@ import PulsatingButton from '@/Components/ui/pulsating-button';
 
 const ManageMyFood = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const fetchDataMatchingDonor = async () => {
     const { data } = await axiosSecure.get(`/my-foods?email=${user.email}`)
@@ -20,7 +20,8 @@ const ManageMyFood = () => {
 
   const { data: myFoods, isLoading } = useQuery({
     queryKey: ['myAllFoods'],
-    queryFn: fetchDataMatchingDonor
+    queryFn: fetchDataMatchingDonor,
+    enabled: !loading
   })
 
   if (isLoading) return <Loading></Loading>

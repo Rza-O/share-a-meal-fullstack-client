@@ -13,6 +13,7 @@ const AuthProvider = ({children}) => {
     // Google Login context
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
@@ -29,6 +30,7 @@ const AuthProvider = ({children}) => {
 
     // Login with email and password
     const handleLogin = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -46,13 +48,13 @@ const AuthProvider = ({children}) => {
 
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
-                axios.post('http://localhost:9000/jwt', user, { withCredentials: true })
+                axios.post('https://share-a-meal-server.vercel.app/jwt', user, { withCredentials: true })
                 .then((res) => {
                     setLoading(false);
                 })
             }
             else {
-                axios.post('http://localhost:9000/logout', {}, {
+                axios.post('https://share-a-meal-server.vercel.app/logout', {}, {
                     withCredentials: true
                 })
                     .then(res => {

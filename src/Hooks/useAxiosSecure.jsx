@@ -5,8 +5,9 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:9000/',
-    withCredentials: true
+    baseURL: 'https://share-a-meal-server.vercel.app/',
+    withCredentials: true,
+
 });
 
 const useAxiosSecure = () => {
@@ -20,6 +21,7 @@ const useAxiosSecure = () => {
             if (error.status === 401 || error.status === 403 ) {
                 handleLogOut()
                     .then(() => {
+                        console.log('unauthorized access');
                         navigate('/login')
                     })
                     .catch((error) => {
@@ -28,7 +30,7 @@ const useAxiosSecure = () => {
             }
             return Promise.reject(error);
         })
-    }, [navigate, handleLogOut]);
+    }, []);
 
     return axiosInstance;
 }

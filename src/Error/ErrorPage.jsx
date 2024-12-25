@@ -1,5 +1,5 @@
 import React from 'react';
-import errorAnimation from '../assets/Animation - 1735122246726.json';
+import errorAnimation from '../../public/Animation - 1735122246726.json';
 import Lottie from 'lottie-react';
 import { Link } from 'react-router-dom';
 

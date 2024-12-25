@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 const FoodRequests = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
   const fetchRequestData = async () => {
     const { data } = await axiosSecure.get(`/my-foods?requestEmail=${user.email}`)
@@ -19,7 +19,8 @@ const FoodRequests = () => {
 
   const { data: myRequests, isLoading } = useQuery({
     queryKey: ['myRequests'],
-    queryFn: fetchRequestData
+    queryFn: fetchRequestData,
+    enabled: !loading
   })
 
 
