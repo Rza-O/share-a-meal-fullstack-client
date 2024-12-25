@@ -16,9 +16,9 @@ const AddFood = () => {
   const handleAddFood = async (data) => {
     // console.log({ ...data, expiryDate });
     // const { foodName, foodImg, foodQuantity, location, notes } = data;
-    const formData = { ...data, expiryDate, status: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
+    const formData = { ...data, foodQuantity: parseInt(data.foodQuantity), expiryDate, status: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
     try {
-      const {data } = await axios.post('http://localhost:9000/add-foods', formData)
+      const { data } = await axios.post('http://localhost:9000/add-foods', formData)
       console.log(data);
       toast.success('Food added successfully!')
       reset();
@@ -47,22 +47,22 @@ const AddFood = () => {
               {/* Food Name */}
               <div>
                 <label htmlFor="foodName" className="block mb-2 text-sm">Food Name</label>
-                <input {...register('foodName')} type="text" name="foodName" id="foodName" placeholder="Food Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('foodName')} type="text" name="foodName" id="foodName" placeholder="Food Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" required />
               </div>
               {/* food image */}
               <div>
                 <label htmlFor="foodImg" className="block mb-2 text-sm">Food Image</label>
-                <input {...register('foodImg')} type="url" name="foodImg" id="foodImg" placeholder="Food Image" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('foodImg')} type="url" name="foodImg" id="foodImg" placeholder="Food Image" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" required/>
               </div>
               {/* food quantity */}
               <div>
                 <label htmlFor="foodQuantity" className="block mb-2 text-sm">Food Quantity(servings)</label>
-                <input {...register('foodQuantity')} type="number" name="foodQuantity" id="foodQuantity" placeholder="Food Quantity" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('foodQuantity')} type="number" name="foodQuantity" id="foodQuantity" placeholder="Food Quantity" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" required/>
               </div>
               {/* pickup location */}
               <div>
                 <label htmlFor="location" className="block mb-2 text-sm">Pickup Location</label>
-                <input {...register('location')} type="text" name="location" id="location" placeholder="Pickup Location" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" />
+                <input {...register('location')} type="text" name="location" id="location" placeholder="Pickup Location" className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800" required/>
               </div>
               {/* Expired Date */}
               <div className=''>
@@ -79,7 +79,7 @@ const AddFood = () => {
                 <div className="flex justify-between mb-2">
                   <label htmlFor="notes" className="text-sm">Additional Notes</label>
                 </div>
-                <textarea {...register('notes')} name="notes" id="notes" placeholder="Additional notes" className="w-full px-3 py-2  border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 textarea textarea-lg" />
+                <textarea {...register('notes')} name="notes" id="notes" placeholder="Additional notes" className="w-full px-3 py-2  border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 textarea textarea-lg" required/>
               </div>
             </div>
             <div className="space-y-2">
