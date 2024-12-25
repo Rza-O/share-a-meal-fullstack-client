@@ -13,11 +13,11 @@ const RequestedFoodTableRow = ({ myFood }) => {
 
     const { mutate } = useMutation({
         mutationFn: async (id) => {
-            const { data } = axiosSecure.patch(`/cancel-request/${id}`)
+            const { data } = await axiosSecure.patch(`/cancel-request/${id}`)
+            return data;
         },
         onSuccess: () => {
             queryClient.invalidateQueries(['myRequests']);
-            queryClient.refetchQueries(['myRequests']);
             toast.success("Food has been cancelled!")
         },
         onError: () => {

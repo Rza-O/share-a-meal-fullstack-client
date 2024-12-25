@@ -32,7 +32,7 @@ const AddFood = () => {
 
   return (
     <div className='bg-sprinkle min-h-svh flex items-center'>
-      <div className='flex w-11/12 mx-auto flex-col lg:flex-row mt-5'>
+      <div className='flex w-11/12 mx-auto flex-col lg:flex-row mt-5 mb-5'>
         <div className="bg-bannerBoy bg-cover  bg-no-repeat xl:w-1/2 ">
           <div className='hero-overlay text-center h-full flex flex-col justify-center space-y-6 px-7 py-6'>
             <h1 className='text-5xl font-bold font-lobster text-secondary'>Be the Change, One Meal at a Time</h1>
