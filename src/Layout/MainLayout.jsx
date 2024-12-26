@@ -8,9 +8,7 @@ const MainLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <PageTransitionWrapper>
-                <Outlet></Outlet>
-            </PageTransitionWrapper>
+            <Outlet></Outlet>
             <Footer></Footer>
         </div>
     );

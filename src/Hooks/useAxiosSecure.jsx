@@ -16,7 +16,7 @@ const useAxiosSecure = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axiosInstance.interceptors.response.use(response => {
+        const interceptor = axiosInstance.interceptors.response.use(response => {
             return response;
         }, error => {
             if (error.status === 401 || error.status === 403 ) {
@@ -24,6 +24,7 @@ const useAxiosSecure = () => {
                     .then(() => {
                         console.log('unauthorized access');
                         navigate('/login')
+                        return toast.error('Unauthorized access has been detected, Please Login again!')
                     })
                     .catch((error) => {
                         console.log(error);
@@ -31,7 +32,10 @@ const useAxiosSecure = () => {
             }
             return Promise.reject(error);
         })
-    }, []);
+        return () => {
+            axiosInstance.interceptors.response.eject(interceptor);
+        };
+    }, [handleLogOut, navigate]);
 
     return axiosInstance;
 }

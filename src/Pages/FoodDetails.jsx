@@ -34,9 +34,9 @@ const FoodDetails = () => {
     console.log(food);
 
     return (
-        <div className='flex w-11/12 mx-auto mt-8 p-10 border'>
+        <div className='flex flex-col w-11/12 mx-auto mt-8 mb-8 p-10 border justify-center items-center'>
             <div>
-                <img className='rounded-badge ' src={ foodImg } alt="" />
+                <img className='rounded-badge w-[1200px] h-[600px]' src={ foodImg } alt="" />
             </div>
             <div className=''>
                 <div className='flex justify-center mb-5'>

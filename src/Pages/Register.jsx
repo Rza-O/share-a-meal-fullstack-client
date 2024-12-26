@@ -69,7 +69,7 @@ const Register = () => {
                                 isLongEnough: (value) =>
                                     value.length >= 6 || "Must be at least 6 characters long",
                             }
-                        })} type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        })} type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
                         {errors.password && <p className='text-sm text-red-500'>{errors.password.message}</p>}
                         <div className="flex justify-end text-xs">
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
