@@ -53,8 +53,6 @@ const AuthProvider = ({children}) => {
                     setLoading(false);
                 })
             }
-                // http://localhost:9000/
-                // https://share-a-meal-server.vercel.app/
             else {
                 axios.post('https://share-a-meal-server.vercel.app/logout', {}, {
                     withCredentials: true

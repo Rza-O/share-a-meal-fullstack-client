@@ -3,8 +3,7 @@ import { useEffect } from "react";
 import useAuth from "./useAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-// http://localhost:9000/
-// https://share-a-meal-server.vercel.app/
+
 const axiosInstance = axios.create({
     baseURL: 'https://share-a-meal-server.vercel.app/',
     withCredentials: true,

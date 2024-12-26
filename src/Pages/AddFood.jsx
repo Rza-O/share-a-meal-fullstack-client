@@ -16,8 +16,6 @@ const AddFood = () => {
   const axiosSecure = useAxiosSecure()
 
   const handleAddFood = async (data) => {
-    // console.log({ ...data, expiryDate });
-    // const { foodName, foodImg, foodQuantity, location, notes } = data;
     const formData = { ...data, foodQuantity: Number(data.foodQuantity), expiryDate, status: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }
     try {
       const { data } = await axiosSecure.post('/add-foods', formData)

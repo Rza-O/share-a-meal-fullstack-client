@@ -151,7 +151,7 @@ const RequestModal = ({ isModalOpen, setModalOpen, food, onSuccess }) => {
                 value={requestNote}
                 onChange={(e) => setRequestNote(e.target.value)}
                 className="textarea textarea-bordered w-full"
-                placeholder="Add any additional notes..."
+                placeholder="Add any additional request notes to the donor..."
               />
             </div>
 

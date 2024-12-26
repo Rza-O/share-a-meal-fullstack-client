@@ -15,8 +15,6 @@ const UpdateModal = ({ isModalOpen, setModalOpen, food }) => {
     const axiosSecure = useAxiosSecure()
     const [expiryDate, setExpiryDate] = useState(new Date(food.expiryDate));
     const { register, handleSubmit } = useForm();
-    // const [requestNote, setRequestNote] = useState('');
-    // const requesterEmail = user?.email;
 
     // useMutation to patch a data
     const { mutate } = useMutation({
