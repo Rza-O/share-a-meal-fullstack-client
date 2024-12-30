@@ -10,6 +10,11 @@ Explore the live application here: [Share-a-Meal](https://share-aa-meal.web.app)
 
 ---
 
+## 🌐🔙 Server Repository
+Explore the live application here: [Share-a-Meal](https://github.com/Rza-O/share-a-meal-fullstack-server)
+
+---
+
 ## 📋 Purpose
 The **Share-a-Meal** app aims to:
 - Minimize food wastage by enabling donors to share surplus food.
