@@ -6,12 +6,12 @@ Welcome to the **Share-a-Meal** frontend repository! This project focuses on con
 ---
 
 ## 🌐 Live Demo
-Explore the live application here: [Share-a-Meal](https://share-aa-meal.web.app)
+Explore the live application here: [Share-A-Meal](https://share-aa-meal.web.app)
 
 ---
 
 ## 🌐🔙 Server Repository
-Explore the live application here: [Share-a-Meal](https://github.com/Rza-O/share-a-meal-fullstack-server)
+Explore the live application here: [Share-A-Meal-Server](https://github.com/Rza-O/share-a-meal-fullstack-server)
 
 ---
 
