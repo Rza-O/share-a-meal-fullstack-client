@@ -4,18 +4,6 @@ Welcome to the **Share-a-Meal** frontend repository! This project focuses on con
 
 ---
 
-## 🌐 Live Demo
-
-Explore the live application here: [Share-A-Meal](https://share-aa-meal.web.app)
-
----
-
-## 🌐🔙 Server Repository
-
-Explore the live application here: [Share-A-Meal-Server](https://github.com/Rza-O/share-a-meal-fullstack-server)
-
----
-
 ## 📋 Purpose
 
 The **Share-a-Meal** app aims to:
@@ -34,6 +22,18 @@ The **Share-a-Meal** app aims to:
 -  **Request Management:** Make and cancel requests for meals.
 -  **Responsive Design:** Fully optimized for all devices.
 -  **Smooth Animations:** Added seamless animations using Framer Motion.
+
+---
+
+## 🌐 Live Demo
+
+Explore the live application here: [Share-A-Meal](https://share-aa-meal.web.app)
+
+---
+
+## 🌐🔙 Server Repository
+
+Explore the live application here: [Share-A-Meal-Server](https://github.com/Rza-O/share-a-meal-fullstack-server)
 
 ---
 
