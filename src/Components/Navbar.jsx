@@ -27,7 +27,7 @@ const Navbar = () => {
     <li><NavLink className={({ isActive }) =>
       isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/our-work'>Our Work</NavLink></li>
     <li><NavLink className={({ isActive }) =>
-      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/available-foods'>Contact</NavLink></li>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/contact'>Contact</NavLink></li>
   </>
 
   const logOut = () => {
