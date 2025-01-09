@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 const axiosInstance = axios.create({
-    baseURL: 'https://share-a-meal-server.vercel.app/',
+    // baseURL: 'https://share-a-meal-server.vercel.app/',
+    baseURL: 'http://localhost:9000',
     withCredentials: true,
 
 });

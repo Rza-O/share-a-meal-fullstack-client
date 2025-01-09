@@ -21,7 +21,7 @@ const FeaturedCards = ({food}) => {
                     <p className="font-bold">Quantity: {quantity} serves</p>
                 </div>
                 <p className="mt-2 text-gray-600">
-                    {notes.substring(0,100)}...
+                    {notes.substring(0,60)}...
                 </p>
                 <div className="mt-4">
                     <div className="flex justify-between items-center text-sm font-medium text-gray-700">

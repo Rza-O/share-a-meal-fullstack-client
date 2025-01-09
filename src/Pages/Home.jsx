@@ -4,6 +4,7 @@ import StatsSection from '@/Components/StatsSection';
 import FeaturedFoods from '@/Components/FeaturedFoods';
 import { MarqueeReviews } from '@/Components/MarqueeRevies';
 import ScrollReveal from '@/Components/ScrollReveal';
+import Newsletter from '@/Components/Newsletter';
 
 
 const Home = () => {
@@ -13,6 +14,7 @@ const Home = () => {
             <StatsSection></StatsSection>
             <ScrollReveal><FeaturedFoods></FeaturedFoods></ScrollReveal>
             <MarqueeReviews></MarqueeReviews>
+            <Newsletter></Newsletter>
         </div>
     );
 };

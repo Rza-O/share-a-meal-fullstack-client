@@ -19,10 +19,18 @@ const FeaturedFoods = () => {
     if (isLoading) {
         return <Loading></Loading>
     }
+
+    const featuredSixCard = featured.slice(0, 6);
+
     return (
         <div className='w-11/12 mx-auto flex flex-col items-center justify-center'>
             <h2 className="font-lobster text-5xl text-green-800 font-bold text-center my-6">Featured Foods</h2>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <div className='2xl:hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-6'>
+                {
+                    featuredSixCard.map(food=> <FeaturedCards key={food._id} food={food}></FeaturedCards>)
+                }
+            </div>
+            <div className='hidden 2xl:grid 2xl:grid-cols-4 gap-6'>
                 {
                     featured.map(food=> <FeaturedCards key={food._id} food={food}></FeaturedCards>)
                 }

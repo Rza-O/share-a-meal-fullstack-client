@@ -9,15 +9,21 @@ const Navbar = () => {
   console.log(user);
   const links = <>
     <li><NavLink className={({ isActive }) =>
-      isActive ? "text-secondary focus:bg-none focus:text-secondary" : ""} to='/'>Home</NavLink></li>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/'>Home</NavLink></li>
     <li><NavLink className={({ isActive }) =>
-      isActive ? "text-secondary focus:bg-none focus:text-secondary" : ""} to='/available-foods'>Available Foods</NavLink></li>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/available-foods'>Available Foods</NavLink></li>
     <li><NavLink className={({ isActive }) =>
-      isActive ? "text-secondary focus:bg-none focus:text-secondary" : ""} to='/add-food'>Add Foods</NavLink></li>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/add-food'>Add Foods</NavLink></li>
     <li><NavLink className={({ isActive }) =>
-      isActive ? "text-secondary focus:bg-none focus:text-secondary" : ""} to='/manage-foods'>Manage Foods</NavLink></li>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/manage-foods'>Manage Foods</NavLink></li>
     <li><NavLink className={({ isActive }) =>
-      isActive ? "text-secondary focus:bg-none focus:text-secondary" : ""} to='/my-requests'>My Requests</NavLink></li>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/my-requests'>My Requests</NavLink></li>
+  </>
+  const publicLinks = <>
+    <li><NavLink className={({ isActive }) =>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/'>Home</NavLink></li>
+    <li><NavLink className={({ isActive }) =>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/available-foods'>Available Foods</NavLink></li>
   </>
 
   const logOut = () => {
@@ -26,7 +32,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="navbar bg-primary text-white lg:px-10">
+    <div className="navbar bg-primary text-white lg:px-10 lg:py-3 sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,7 +52,9 @@ const Navbar = () => {
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-green-800 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            {links}
+            {
+              user? links : publicLinks
+            }
           </ul>
         </div>
 
@@ -57,7 +65,9 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
-          {links}
+          {
+            user ? links : publicLinks
+          }
         </ul>
       </div>
       <div className="navbar-end gap-2">
