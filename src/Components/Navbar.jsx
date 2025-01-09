@@ -18,6 +18,10 @@ const Navbar = () => {
       isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/manage-foods'>Manage Foods</NavLink></li>
     <li><NavLink className={({ isActive }) =>
       isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/my-requests'>My Requests</NavLink></li>
+    <li><NavLink className={({ isActive }) =>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/our-work'>Our Work</NavLink></li>
+    <li><NavLink className={({ isActive }) =>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/contact'>Contact</NavLink></li>
   </>
   const publicLinks = <>
     <li><NavLink className={({ isActive }) =>
@@ -39,7 +43,7 @@ const Navbar = () => {
     <div className="navbar bg-primary text-white lg:px-10 lg:py-3 sticky top-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost xl:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -67,7 +71,7 @@ const Navbar = () => {
           <a className="btn btn-ghost text-xl">Share<span className='text-secondary'>A</span>Meal</a></div>
 
       </div>
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center ml-20 hidden xl:flex">
         <ul className="menu menu-horizontal px-1">
           {
             user ? links : publicLinks
@@ -92,7 +96,7 @@ const Navbar = () => {
           </ul>
           </div>
           : <div>
-            <Link to='/login'><button className='btn btn-ghost'>Login</button></Link>
+            <Link to='/login'><button className='btn btn-ghost hover:text-secondary'>Login</button></Link>
             <Link to='/register'><button className='btn bg-secondary border-none'>Register</button></Link>
           </div>}
         </div>

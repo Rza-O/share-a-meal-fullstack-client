@@ -11,10 +11,6 @@ const Banner = () => {
                 <span className="block mb-4 text-xs md:text-lg text-accent font-medium font-lobster">
                     Better world every day
                 </span>
-                {/* <h3 className="text-4xl md:text-6xl font-semibold text-secondary">
-                    Let's change it up a bit
-                </h3> */}
-                {/* { Fighting Hunger and Reducing Food Waste – Every Meal Counts} */}
                 <h1 className="max-w-2xl text-left text-5xl leading-snug text-secondary">
                     Join Us{" "}
                     <span className="relative text-accent">

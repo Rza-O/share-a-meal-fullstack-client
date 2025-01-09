@@ -2,6 +2,7 @@ import { useState } from "react";
 import newsletter from '../assets/Email campaign-bro.svg'
 import { GoMail } from "react-icons/go";
 import toast from "react-hot-toast";
+import { motion } from "motion/react";
 
 const Newsletter = () => {
    const [email, setEmail] = useState('');
@@ -34,11 +35,15 @@ const Newsletter = () => {
          <h2 className="font-lobster text-5xl text-green-800 font-bold text-center my-6">Newsletter</h2>
          <div className="2xl:w-10/12 lg:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center">
             {/* text */}
-            <div className="flex flex-col justify-between gap-5  lg:w-1/2 2xl:pl-12">
+            <motion.div
+               initial={{ opacity: 0, x: -20 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.5, delay: 0.2 }}
+               className="flex flex-col justify-between gap-5  lg:w-1/2 2xl:pl-12">
                {/* heading and subtitle */}
                <div className="space-y-3">
                   <h1 className="text-3xl font-bold">Stay in the loop</h1>
-                  <p className="max-w-2xl"> Join our newsletter and stay connected with the latest product updates, expert advice, and tools designed to boost your productivity. Be the first to access exclusive content and tips that help you work smarter every day!</p>
+                  <p className="max-w-2xl"> Join our newsletter and stay connected with the latest donators updates, expert advice, and community designed to reduce food waste. Be the first to access exclusive content and tips that help our community everyday!</p>
                </div>
                {/* form */}
                <div className="flex items-center w-full ">
@@ -61,11 +66,15 @@ const Newsletter = () => {
                      </p>
                   </div>
                </div>
-            </div>
+            </motion.div>
             {/* image */}
-            <div className="lg:w-1/2 flex items-center justify-center">
+            <motion.div
+               initial={{opacity: 0, x: 20}}
+               whileInView={{ opacity: 1, x:0 }}
+               transition={{duration: 0.5, delay: 0.2}}
+               className="lg:w-1/2 flex items-center justify-center">
                <img src={newsletter} className="w-[600px]" alt="" />
-            </div>
+            </motion.div>
          </div>
       </section>
    );

@@ -12,6 +12,7 @@ import FoodDetails from '../Pages/FoodDetails';
 import PrivateRoute from '../Private/PrivateRoute';
 import ErrorPage from '../Error/ErrorPage';
 import OurWork from '@/Pages/OurWork';
+import Contact from '@/Pages/Contact';
 
 const router = createBrowserRouter([
     {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
                 path: '/our-work',
                 element: <OurWork></OurWork>
             },
+            {
+                path: '/contact',
+                element: <Contact></Contact>
+            }
         ]
     }
 ])
