@@ -30,7 +30,7 @@ const Newsletter = () => {
    </>
 
    return (
-      <section className="bg-gray-100 py-6">
+      <section className="bg-gray-100 pt-1">
          <h2 className="font-lobster text-5xl text-green-800 font-bold text-center my-6">Newsletter</h2>
          <div className="2xl:w-10/12 lg:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center">
             {/* text */}

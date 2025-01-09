@@ -24,6 +24,10 @@ const Navbar = () => {
       isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/'>Home</NavLink></li>
     <li><NavLink className={({ isActive }) =>
       isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/available-foods'>Available Foods</NavLink></li>
+    <li><NavLink className={({ isActive }) =>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/our-work'>Our Work</NavLink></li>
+    <li><NavLink className={({ isActive }) =>
+      isActive ? "text-secondary focus:bg-none focus:text-secondary" : "hover:text-secondary"} to='/available-foods'>Contact</NavLink></li>
   </>
 
   const logOut = () => {
