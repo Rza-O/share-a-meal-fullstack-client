@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import contact from '../assets/Contact.svg'
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Contact = () => {
 
@@ -13,6 +14,9 @@ const Contact = () => {
 
    return (
       <div className="bg-gray-50 flex flex-col lg:flex-row items-center p-6 ">
+         <Helmet>
+            <title>Contact | Share-A-Meal</title>
+         </Helmet>
          <div>
             <img src={contact} className='w-full md:min-h-[800px]' alt="" />
          </div>

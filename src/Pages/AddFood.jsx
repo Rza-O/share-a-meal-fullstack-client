@@ -8,6 +8,7 @@ import useAuth from '../Hooks/useAuth';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '@/Hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const AddFood = () => {
   const { user } = useAuth();
@@ -30,6 +31,9 @@ const AddFood = () => {
 
   return (
     <div className='bg-sprinkle min-h-svh flex items-center'>
+      <Helmet>
+        <title>Add Food | Share-A-Meal</title>
+      </Helmet>
       <div className='flex w-11/12 mx-auto flex-col lg:flex-row mt-5 mb-5'>
         <div className="bg-bannerBoy bg-cover  bg-no-repeat xl:w-1/2 ">
           <div className='hero-overlay text-center h-full flex flex-col justify-center space-y-6 px-7 py-6'>

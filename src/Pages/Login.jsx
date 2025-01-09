@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { handleLogin, setUser, handleGoogleLogin } = useAuth();
@@ -36,6 +37,9 @@ const Login = () => {
 
     return (
         <div className="bg-world min-h-screen flex justify-center items-center bg-no-repeat bg-cover">
+            <Helmet>
+                <title>Login | Share-A-Meal</title>
+            </Helmet>
             <div className="w-11/12 mx-auto max-w-md p-8 space-y-3 bg-accent text-primary">
                 <h1 className="text-2xl font-bold text-center">Login</h1>
                 <form onSubmit={handleSubmit(loginForm)} className="space-y-6">

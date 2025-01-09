@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../Components/Loading';
 import { LuLayoutGrid } from "react-icons/lu";
 import { FaSearch } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const AvailableFoods = () => {
   const axiosSecure = useAxiosSecure();
@@ -51,6 +52,9 @@ const AvailableFoods = () => {
 
   return (
     <div className='bg-accent'>
+      <Helmet>
+        <title>Available Foods | Share-A-Meal</title>
+      </Helmet>
       <div className=' space-y-12 pt-5 bg-center w-11/12 mx-auto min-h-screen pb-5'>
         <div className='text-center space-y-4'>
 

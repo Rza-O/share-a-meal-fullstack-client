@@ -6,6 +6,7 @@ import Loading from '../Components/Loading';
 import RequestedFoodTableRow from '../Components/RequestedFoodTableRow';
 import PulsatingButton from '@/Components/ui/pulsating-button';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const FoodRequests = () => {
   const axiosSecure = useAxiosSecure();
@@ -32,6 +33,9 @@ const FoodRequests = () => {
 
   return (
     <div className='bg-harvesting bg-no-repeat bg-contain bg-center min-h-screen w-11/12 mx-auto'>
+      <Helmet>
+        <title>Food Requests | Share-A-Meal</title>
+      </Helmet>
       {
         myRequests.length < 1 ?
           <div className='p-14 flex flex-col justify-center items-center text-center gap-2 text-primary font-bold'>

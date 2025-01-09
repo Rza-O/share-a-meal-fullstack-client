@@ -8,6 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import Loading from '../Components/Loading';
 import { Link } from 'react-router-dom';
 import PulsatingButton from '@/Components/ui/pulsating-button';
+import { Helmet } from 'react-helmet-async';
 
 const ManageMyFood = () => {
   const axiosSecure = useAxiosSecure();
@@ -33,6 +34,9 @@ const ManageMyFood = () => {
 
   return (
     <div className='bg-harvesting bg-no-repeat bg-contain bg-center min-h-screen w-11/12 mx-auto'>
+      <Helmet>
+        <title>Manage Food | Share-A-Meal</title>
+      </Helmet>
       {
         myFoods.length < 1 ? <div className='p-14 flex flex-col justify-center items-center text-center gap-2 text-primary'>
           <h1 className='font-lobster text-5xl p-3 bg-accent'>You have not added any food yet!</h1>

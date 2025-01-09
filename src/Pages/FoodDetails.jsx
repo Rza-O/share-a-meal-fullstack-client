@@ -6,6 +6,7 @@ import Loading from '../Components/Loading';
 import { format } from 'date-fns';
 import RequestModal from '../Components/RequestModal';
 import useAuth from '../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const FoodDetails = () => {
     const {id} = useParams();
@@ -35,6 +36,9 @@ const FoodDetails = () => {
 
     return (
         <div className='flex flex-col w-11/12 mx-auto mt-8 mb-8 p-10 border justify-center items-center'>
+            <Helmet>
+                <title>{foodName} | Share-A-Meal</title>
+            </Helmet>
             <div>
                 <img className='rounded-badge w-[1200px] lg:h-[600px]' src={ foodImg } alt="" />
             </div>
