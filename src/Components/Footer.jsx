@@ -1,5 +1,10 @@
 import React from 'react';
 import logo from '../assets/largeLogo.png';
+import { Link } from 'react-router-dom';
+import { FaMapPin } from 'react-icons/fa';
+import { HiPhone } from "react-icons/hi2";
+import { MdEmail } from 'react-icons/md';
+
 
 const Footer = () => {
     return (
@@ -14,49 +19,35 @@ const Footer = () => {
                         <span className="self-center text-2xl font-semibold">Share-A-Meal</span>
                     </a>
                 </div>
-                <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
+                <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-3">
+                    
                     <div className="space-y-3">
-                        <h3 className="tracking-wide uppercase text-gray-900">Product</h3>
+                        <h3 className="tracking-wide uppercase text-gray-900">Quick Links</h3>
                         <ul className="space-y-1">
                             <li>
-                                <a rel="noopener noreferrer" href="#">Features</a>
+                                
+                                <Link to='/'>Home</Link>
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" href="#">Integrations</a>
+                                <Link to='/available-foods'>Available Foods</Link>
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" href="#">Pricing</a>
+                                <Link to='/our-work'>Our Work</Link>
                             </li>
                             <li>
-                                <a rel="noopener noreferrer" href="#">FAQ</a>
+                                <Link to='/contact'>Contact</Link>
                             </li>
                         </ul>
                     </div>
+
                     <div className="space-y-3">
-                        <h3 className="tracking-wide uppercase text-gray-900">Company</h3>
-                        <ul className="space-y-1">
-                            <li>
-                                <a rel="noopener noreferrer" href="#">Privacy</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" href="#">Terms of Service</a>
-                            </li>
-                        </ul>
+                        <h3 className="uppercase text-gray-900">Contact</h3>
+
+                        <p className='flex items-center gap-1'><span className='font-semibold'><FaMapPin /></span> 221B, Baker St, London, UK</p>
+                        <p className='flex items-center gap-1'><HiPhone className='font-semibold'/> +8801970853705</p>
+                        <p className='flex items-center gap-1'><MdEmail className='font-semibold text-base'/> contact@ShareAMeal.co</p>
                     </div>
-                    <div className="space-y-3">
-                        <h3 className="uppercase text-gray-900">Developers</h3>
-                        <ul className="space-y-1">
-                            <li>
-                                <a rel="noopener noreferrer" href="#">Public API</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" href="#">Documentation</a>
-                            </li>
-                            <li>
-                                <a rel="noopener noreferrer" href="#">Guides</a>
-                            </li>
-                        </ul>
-                    </div>
+
                     <div className="space-y-3">
                         <div className="uppercase text-gray-900">Social media</div>
                         <div className="flex justify-start space-x-3">
