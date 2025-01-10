@@ -51,19 +51,21 @@ const FoodDetails = () => {
                     </div>
                     {/* <p>Donor: {donor?.name} , { donor?.email }</p> */}
                 </div>
-                <div className='space-y-5 flex flex-col justify-around items-center text-center'>
-                    <h1 className='text-5xl font-bold'>{foodName}</h1>
-                    <h3 className='text-3xl font-bold'>{foodQuantity} / Servings</h3>
-                    <p className='w-4/5 text-left'>{notes}</p>
-                    <p className='badge badge-outline badge-success'>{status}</p>
-                    <p className='text-lg'><span className='font-semibold'>Donor name:</span> { donor?.name }</p>
-                    <p className='text-lg'><span className='font-semibold'>Donor mail:</span> { donor?.email }</p>
-                    <p className='text-lg' ><span className='font-semibold'>Pickup location:</span> {location}</p>
-                    <p className='text-lg'><span className='font-semibold'>Expiry Date:</span> {format(new Date(expiryDate), "PP") }</p>
-                    
-                    {
-                        currentUser == donorEmail ? <button className='btn btn-wide bg-secondary hover:bg-accent disabled'>Thank You for adding this food!</button> : food?.status === 'requested' ? <button className='btn btn-wide bg-gray-400 hover:bg-accent'>Requested</button> : <button onClick={() => setModalOpen(true)} className={'btn btn-wide bg-secondary hover:bg-accent'}>Request Food</button>
-                    }
+                <div className='space-y-5 '>
+                    <div className='flex  flex-col p-6 gap-4 rounded-lg shadow-lg max-w-4xl'>
+                        <h1 className='text-5xl font-bold text-center'>{foodName}</h1>
+                        <h3 className='text-xl font-bold'>Available: {foodQuantity} / Servings</h3>
+                        <p className=' text-left w-full'>{notes}</p>
+                        <p className='badge badge-outline badge-success'>{status}</p>
+                        <p className='text-lg'><span className='font-semibold'>Donor name:</span> { donor?.name }</p>
+                        <p className='text-lg'><span className='font-semibold'>Donor mail:</span> { donor?.email }</p>
+                        <p className='text-lg' ><span className='font-semibold'>Pickup location:</span> {location}</p>
+                        <p className='text-lg'><span className='font-semibold'>Expiry Date:</span> {format(new Date(expiryDate), "PP") }</p>
+                        
+                        {
+                            currentUser == donorEmail ? <button className='btn btn-wide bg-secondary hover:bg-accent disabled'>Thank You for adding this food!</button> : food?.status === 'requested' ? <button className='btn btn-wide bg-gray-400 hover:bg-accent'>Requested</button> : <button onClick={() => setModalOpen(true)} className={'btn btn-wide bg-secondary hover:bg-accent'}>Request Food</button>
+                        }
+                    </div>
                     
                 </div>
             </div>
