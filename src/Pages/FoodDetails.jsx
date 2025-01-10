@@ -40,7 +40,7 @@ const FoodDetails = () => {
                 <title>{foodName} | Share-A-Meal</title>
             </Helmet>
             <div>
-                <img className='rounded-badge w-[1200px] lg:h-[600px]' src={ foodImg } alt="" />
+                <img className='rounded-badge w-[1200px] lg:h-[600px] object-cover' src={ foodImg } alt="" />
             </div>
             <div className=''>
                 <div className='flex justify-center mb-5'>

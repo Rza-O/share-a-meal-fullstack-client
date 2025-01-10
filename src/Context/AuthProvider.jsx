@@ -48,13 +48,13 @@ const AuthProvider = ({children}) => {
 
             if (currentUser?.email) {
                 const user = { email: currentUser.email };
-                axios.post('https://share-a-meal-server.vercel.app/jwt', user, { withCredentials: true })
+                axios.post('http://localhost:9000/jwt', user, { withCredentials: true })
                 .then((res) => {
                     setLoading(false);
                 })
             }
             else {
-                axios.post('https://share-a-meal-server.vercel.app/logout', {}, {
+                axios.post('http://localhost:9000/logout', {}, {
                     withCredentials: true
                 })
                     .then(res => {

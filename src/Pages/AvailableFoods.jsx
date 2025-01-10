@@ -4,7 +4,7 @@ import useAxiosSecure from '../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import Loading from '../Components/Loading';
 import { LuLayoutGrid } from "react-icons/lu";
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
 import { Helmet } from 'react-helmet-async';
 
 const AvailableFoods = () => {
@@ -39,7 +39,7 @@ const AvailableFoods = () => {
   }
 
   const handleSortToggle = () => {
-    setSortOrder((prev)=> prev === 'desc' ? 'asc' : 'desc')
+    setSortOrder((prev) => prev === 'desc' ? 'asc' : 'desc')
   }
 
   const handleReset = () => {
@@ -47,7 +47,7 @@ const AvailableFoods = () => {
     setToggleGrid(false);
     setSortOrder(null)
   }
-  console.log(foods);
+  console.log(sortOrder);
 
 
   return (
@@ -82,7 +82,7 @@ const AvailableFoods = () => {
                 </form>
                 <div className='flex gap-2'>
                   <div>
-                    <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date</button>
+                    <button onClick={handleSortToggle} className='btn rounded-md bg-primary text-white hover:text-secondary hover:bg-primary'>Sort By Expiry Date { sortOrder === 'desc'? <FaSortAmountDown></FaSortAmountDown> : <FaSortAmountUp></FaSortAmountUp>}</button>
                   </div>
                   <div>
                     <button onClick={()=> setToggleGrid(!toggleGrid)} className='btn text-xl bg-primary text-white hover:text-secondary hover:bg-primary hidden lg:block'>

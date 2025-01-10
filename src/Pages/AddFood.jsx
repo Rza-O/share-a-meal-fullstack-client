@@ -14,7 +14,7 @@ const AddFood = () => {
   const { user } = useAuth();
   const [expiryDate, setExpiryDate] = useState(new Date());
   const { register, handleSubmit, reset } = useForm();
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const handleAddFood = async (data) => {
     const formData = { ...data, foodQuantity: Number(data.foodQuantity), expiryDate, status: 'available', donor: { name: user?.displayName, email: user?.email, image: user?.photoURL } }

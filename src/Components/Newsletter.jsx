@@ -33,13 +33,13 @@ const Newsletter = () => {
    return (
       <section className="bg-gray-100 pt-1">
          <h2 className="font-lobster text-5xl text-green-800 font-bold text-center my-6">Newsletter</h2>
-         <div className="2xl:w-10/12 lg:w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center">
+         <div className="2xl:w-10/12 w-11/12 mx-auto flex flex-col md:flex-row justify-between items-center py-6">
             {/* text */}
             <motion.div
                initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.5, delay: 0.2 }}
-               className="flex flex-col justify-between gap-5  lg:w-1/2 2xl:pl-12">
+               transition={{ duration: 0.5, delay: 0.2, type: 'spring', stiffness: 100 }}
+               className="flex flex-col justify-between gap-5 text-center lg:text-left lg:w-1/2 2xl:pl-12">
                {/* heading and subtitle */}
                <div className="space-y-3">
                   <h1 className="text-3xl font-bold">Stay in the loop</h1>
@@ -49,7 +49,7 @@ const Newsletter = () => {
                <div className="flex items-center w-full ">
                   <form onSubmit={handleSubmit} className="w-full">
                      <input type="email" name="email" placeholder="Your Email" className="input input-bordered w-full max-w-xl" required />
-                  <button type="submit" className="btn bg-primary text-white hover:bg-primary hover:text-secondary hover:scale-110">Subscribe</button>
+                  <button type="submit" className="my-2 btn bg-primary text-white hover:bg-primary hover:text-secondary hover:scale-110">Subscribe</button>
                   </form>
                </div>
                {/* Terms and condition */}
@@ -71,7 +71,7 @@ const Newsletter = () => {
             <motion.div
                initial={{opacity: 0, x: 20}}
                whileInView={{ opacity: 1, x:0 }}
-               transition={{duration: 0.5, delay: 0.2}}
+               transition={{ duration: 0.5, delay: 0.2, type: 'spring' }}
                className="lg:w-1/2 flex items-center justify-center">
                <img src={newsletter} className="w-[600px]" alt="" />
             </motion.div>
