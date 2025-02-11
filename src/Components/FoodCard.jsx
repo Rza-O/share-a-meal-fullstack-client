@@ -12,7 +12,7 @@ const FoodCard = ({food}) => {
                 </div>
                 <div className="badge bg-secondary">{ food.status }</div>
             </div>
-            <img src={food.foodImg} alt="" className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
+            <img src={food.foodImg} alt="" className="object-cover object-center w-[500px] rounded-t-md h-72 dark:bg-gray-500" />
             <div className="flex flex-col justify-between p-6 space-y-8">
                 <div className="space-y-2">
                     <h2 className="text-3xl font-semibold tracking-wide">{food.foodName}</h2>
