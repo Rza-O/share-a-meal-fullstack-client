@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const FoodCard = ({food}) => {
     return (
-        <div className="w-md 2xl:w-[500px] h-[620px] rounded-md shadow-lg bg-gray-50 text-gray-800 card">
+        <div className="w-md 2xl:max-w-[500px] h-[620px] rounded-md shadow-lg bg-gray-50 text-gray-800 card">
             <div className="flex space-x-4 items-center justify-around p-2 px-3">
                 <img referrerPolicy='no-referrer' alt="" src={ food?.donor?.image } className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500" />
                 <div className="flex flex-col space-y-1">
